@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   LightModeOutlined,
   DarkModeOutlined,
@@ -11,22 +11,22 @@ import FlexBetween from './FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from 'state';
 import profileImage from "assets/profile.jpeg";
-import { 
-  AppBar, 
-  Button, 
-  Box, 
-  Typography, 
-  IconButton, 
-  InputBase, 
-  Toolbar, 
-  Menu, 
-  MenuItem, 
-  useTheme 
+import {
+  AppBar,
+  Button,
+  Box,
+  Typography,
+  IconButton,
+  InputBase,
+  Toolbar,
+  Menu,
+  MenuItem,
+  useTheme
 } from '@mui/material';
 
 const Navbar = () => {
-  const dispatch = useDispatch;
-  const theme = useTheme
+  const dispatch = useDispatch();
+  const theme = useTheme();
   return (
     <AppBar
       sx={{
@@ -36,9 +36,9 @@ const Navbar = () => {
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
-      {/* Left side */}
+        {/* Left side */}
         <FlexBetween>
-          <IconButton onClick={()=> console.log('open/close sidebar')}>
+          <IconButton onClick={() => console.log('open/close sidebar')}>
             <MenuIcon />
           </IconButton>
           <FlexBetween
@@ -52,6 +52,19 @@ const Navbar = () => {
               <Search />
             </IconButton>
           </FlexBetween>
+        </FlexBetween>
+
+        {/* Right Side */}
+        <FlexBetween gap="1.5rem">
+          <IconButton onClick={() => dispatch(setMode())}>
+            {theme.palette.mode === 'dark' ? (
+              <DarkModeOutlined sx={{ fontSize: '25px' }} />
+            ) : (<LightModeOutlined sx={{ fontSize: '25px' }} />
+            )}
+          </IconButton>
+          <IconButton>
+            <SettingsOutlined sx={{ fontSize: '25px' }} />
+          </IconButton>
         </FlexBetween>
       </Toolbar>
 
