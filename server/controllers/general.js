@@ -1,5 +1,6 @@
-import User from "../models/User.js";
+import User from "../models/User";
 
+// eslint-disable-next-line import/prefer-default-export
 export const getUser = async (req, res) => {
   try {
     const { id } = req.params;
